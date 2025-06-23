@@ -3,21 +3,34 @@ import vocaliteLogo from '/Vocalite.svg'
 import './App.css'
 
 function App() {
-  const [FadeStatus, setFadeStatus] = useState(false);
-
+  const [fadeStatus, setFadeStatus] = useState(false);
+  const [resized, setResized] = useState(false);
+  
   return (
     <>
-      <h1>Welcome to Vocalite!</h1>
+      {fadeStatus ? (
+        <div className="replacement-div">
+          <h1>Menu options</h1>
+          <button>Link discord</button>
+          <button>Settings</button>
+          <button>Shutdown</button>
+        </div>
+      ) : (
+        <div className={fadeStatus? "fadeout-right" : ""}>
+          <h1>Welcome to Vocalite!</h1>
+        </div>
+      )}
       
-      <div>  
+      <div className={resized ? "image-container resized" : "image-container"}>  
         <img 
         src={vocaliteLogo} 
-        className="logo" 
+        className={`logo${fadeStatus ? " fadeout-bottom " : ""}`} 
         alt="Vocalite logo"
         onClick = {() => setFadeStatus(true)}
+        onAnimationEnd={fadeStatus ? () => setResized(true) : undefined}
         />
 
-        <div className={FadeStatus ? "fadeout" : ""}>
+        <div className={fadeStatus? "fadeout-right" : ""}>
           <p>Press logo to continue</p>
         </div>
       </div>

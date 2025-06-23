@@ -16,7 +16,7 @@
   filter: drop-shadow(0 0 2em #ffffff);
 }
 
-@keyframes fadeout {
+@keyframes fadeout-right {
   from {
     opacity: 1;
     transform: translateX(0);
@@ -27,8 +27,32 @@
   }
 }
 
-.fadeout {
-  animation: fadeout forwards 1s;
+@keyframes fadeout-bottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(75%);
+  }
+}
+
+@keyframes fadein-top {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(65%);
+  }
+}
+
+.fadeout-right {
+  animation: fadeout-right forwards 1s;
+}
+
+.fadeout-bottom {
+  animation: fadeout-bottom forwards 1s;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -39,4 +63,15 @@
 
 .card {
   padding: 2em;
+}
+
+.image-container.resized {
+  /* Example: shrink the container and center it */
+  max-width: 200px;
+  margin: 2rem auto;
+  transition: max-width 0.5s;
+}
+
+.replacement-div {
+  animation: fadein-top forwards 1s;
 }
