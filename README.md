@@ -1,11 +1,11 @@
 # Vocalite
-Automatic voice-to-text transcription with handy Discord support to send messages without switching applications.
+### Automatic voice-to-text transcription with handy Discord support to send messages without switching applications.
 
 Support is only for Windows currently. I will add further support for Linux and Mac in later versions.
 
 ---
 
-The process?
+### The process?
 
 First, detect vocal activity,
 Then, save a temporary buffer on your PC of that vocal activity.
