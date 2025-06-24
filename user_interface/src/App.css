@@ -27,12 +27,12 @@
   }
 }
 
-@keyframes fadeout-bottom {
+@keyframes slide-bottom {
   from {
     transform: translateY(0);
   }
   to {
-    transform: translateY(75%);
+    transform: translateY(65%);
   }
 }
 
@@ -43,7 +43,7 @@
   }
   to {
     opacity: 1;
-    transform: translateY(65%);
+    transform: translateY(50%);
   }
 }
 
@@ -51,8 +51,8 @@
   animation: fadeout-right forwards 1s;
 }
 
-.fadeout-bottom {
-  animation: fadeout-bottom forwards 1s;
+.slide-bottom {
+  animation: slide-bottom forwards 1s;
 }
 
 @media (prefers-reduced-motion: no-preference) {

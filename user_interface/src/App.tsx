@@ -23,7 +23,7 @@ function App() {
       <div>  
         <img 
         src={vocaliteLogo} 
-        className={`logo${fadeStatus ? " fadeout-bottom " : ""}`} 
+        className={`logo${fadeStatus ? " slide-bottom " : ""}`} 
         alt="Vocalite logo"
         onClick = {() => setFadeStatus(true)}
         />
