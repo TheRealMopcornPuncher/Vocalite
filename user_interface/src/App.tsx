@@ -4,7 +4,6 @@ import './App.css'
 
 function App() {
   const [fadeStatus, setFadeStatus] = useState(false);
-  const [resized, setResized] = useState(false);
   
   return (
     <>
@@ -21,13 +20,12 @@ function App() {
         </div>
       )}
       
-      <div className={resized ? "image-container resized" : "image-container"}>  
+      <div>  
         <img 
         src={vocaliteLogo} 
         className={`logo${fadeStatus ? " fadeout-bottom " : ""}`} 
         alt="Vocalite logo"
         onClick = {() => setFadeStatus(true)}
-        onAnimationEnd={fadeStatus ? () => setResized(true) : undefined}
         />
 
         <div className={fadeStatus? "fadeout-right" : ""}>

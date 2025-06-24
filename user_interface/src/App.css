@@ -65,13 +65,6 @@
   padding: 2em;
 }
 
-.image-container.resized {
-  /* Example: shrink the container and center it */
-  max-width: 200px;
-  margin: 2rem auto;
-  transition: max-width 0.5s;
-}
-
 .replacement-div {
   animation: fadein-top forwards 1s;
 }
