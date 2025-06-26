@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useNavigate, Route, Routes } from 'react-router-dom'
 import vocaliteLogo from '/Vocalite.svg'
 import './App.css'
+import Settings from './settings'
 
-function App() {
+function MainMenu() {
   const [fadeStatus, setFadeStatus] = useState(false);
+  const navigate = useNavigate();
   
   return (
     <>
@@ -11,7 +14,7 @@ function App() {
         <div className="replacement-div">
           <h1>Menu options</h1>
           <button>Link discord</button>
-          <button>Settings</button>
+          <button onClick={() => navigate('/settings')}>Settings</button>
           <button>Shutdown</button>
         </div>
       ) : (
@@ -33,6 +36,15 @@ function App() {
         </div>
       </div>
     </>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<MainMenu />} />
+      <Route path="/settings" element={<Settings />} />
+    </Routes>
   )
 }
 
