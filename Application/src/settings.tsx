@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import './settings.css'
 
@@ -7,10 +7,14 @@ function Settings() {
         document.title = 'Settings';
     }, []);
 
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div className="card">
-            <div className="dropdown">
-                <button className="dropdownButton">Microphone input</button>
+            <div className={`dropdown${isOpen ? ' open' : ''}`}> 
+                <button className="dropdownButton" onClick={() => setIsOpen((prev) => !prev)}>
+                    Microphone input
+                </button>
                 <div className="dropdown-items">
                     <p>Item 1</p>
                     <p>Item 2</p>
