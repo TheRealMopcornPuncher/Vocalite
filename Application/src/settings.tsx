@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import { useNavigate } from 'react-router-dom'
+import './app.css'
 import './settings.css'
 
 function Settings() {
+    const navigate = useNavigate();
+
     useEffect(() => {
         document.title = 'Settings';
     }, []);
@@ -20,6 +23,8 @@ function Settings() {
                     <p>Item 2</p>
                 </div>
             </div>
+
+            <button className="button" onClick={() => navigate('/')}>Back</button>
         </div>
     );
 }

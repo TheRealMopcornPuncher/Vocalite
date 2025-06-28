@@ -24,7 +24,8 @@
 /* Dropdown container */
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: block;
+    margin-bottom: 0;
 }
 
 /* Show dropdown items when open */
@@ -62,4 +63,17 @@
 
 .dropdown-items p:hover {
     background: #5e5e5e;
+}
+
+.button {
+    background-color: #909090;
+    min-width: 80px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 16px;
+    color: #000000;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.5s;
+    margin-top: 24px;
 }
