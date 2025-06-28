@@ -1,0 +1,56 @@
+/* Card styling */
+.card {
+    border-radius: 10px;
+    background-color: #262626;
+}
+
+/* Dropdown button styling */
+.dropdownButton {
+    background-color: #b7b7b7;
+    min-width: 320px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 16px;
+    color: #1b1b1b;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.5s;
+}
+
+.dropdownButton:hover {
+    background-color: #d5d5d5;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Show dropdown items on hover */
+.dropdown:hover .dropdown-items {
+    display: block;
+}
+
+/* Dropdown items styling */
+.dropdown-items {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    min-width: 320px;
+    background-color: #4c4c4c;
+}
+
+/* Paragraphs inside dropdown items */
+.dropdown-items p {
+    font-size: 16px;
+    color: #f0f0f0;
+    padding: 12px 16px;
+    margin: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dropdown-items p:hover {
+    background: #5e5e5e;
+}

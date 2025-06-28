@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, Route, Routes } from 'react-router-dom'
 import vocaliteLogo from '/Vocalite.svg'
-import './App.css'
+import './app.css'
 import Settings from './settings'
 
 function MainMenu() {
   const [fadeStatus, setFadeStatus] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+          document.title = 'VOCALITE';
+      }, []);
   
   return (
     <>
