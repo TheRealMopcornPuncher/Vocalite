@@ -11,7 +11,7 @@ function Settings() {
     }, []);
 
     const [isOpen, setIsOpen] = useState(false);
-    const [volume, setVolume] = useState(50); // Volume state
+    const [volume, setVolume] = useState(50);
 
     return (
         <div className="card">
