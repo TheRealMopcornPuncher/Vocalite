@@ -24,6 +24,15 @@ function Settings() {
                 </div>
             </div>
 
+            <div>
+                <p className="sliderParagraph">Output as speech</p>
+                <label className="switch">
+                    <input type="checkbox"/>
+                    <span className="slider round"></span>
+                </label>
+                <p className="sliderParagraph">Output to discord</p>
+            </div>
+
             <button className="button" onClick={() => navigate('/')}>Back</button>
         </div>
     );
