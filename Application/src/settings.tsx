@@ -11,6 +11,7 @@ function Settings() {
     }, []);
 
     const [isOpen, setIsOpen] = useState(false);
+    const [volume, setVolume] = useState(50); // Volume state
 
     return (
         <div className="card">
@@ -25,15 +26,42 @@ function Settings() {
             </div>
 
             <div>
-                <p className="sliderParagraph">Output as speech</p>
+                <p className="compactParagraph">Audio/Text output</p>
+                <p className="settingsParagraph">Output as speech</p>
                 <label className="switch">
                     <input type="checkbox"/>
-                    <span className="slider round"></span>
+                    <span className="toggle round"></span>
                 </label>
-                <p className="sliderParagraph">Output to discord</p>
+                <p className="settingsParagraph">Output to discord</p>
             </div>
 
-            <button className="button" onClick={() => navigate('/')}>Back</button>
+            <div>
+                <p className="compactParagraph">Open on startup</p>
+                <p className="settingsParagraph">No</p>
+                <label className="switch">
+                    <input type="checkbox"/>
+                    <span className="toggle round"></span>
+                </label>
+                <p className="settingsParagraph">Yes</p>
+            </div>
+
+            <div className="sliderContainer">
+                <p className="compactParagraph">Volume output</p>
+                <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    value={volume}
+                    className="slider"
+                    id="volumeSlider"
+                    onChange={e => setVolume(Number(e.target.value))}
+                />
+            </div>
+
+            <div>
+                <button className="button" onClick={() => navigate('/')}>Back</button>
+                <button className="button">Save</button> 
+            </div>
         </div>
     );
 }

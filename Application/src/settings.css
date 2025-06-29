@@ -73,15 +73,15 @@
     min-height: 10px;
     border-radius: 5px;
     font-size: 16px;
-    padding: 4px;
+    padding: 4px 30px;
+    margin-left: 4px;
+    margin-right: 4px;
     color: #000000;
     cursor: pointer;
     border: none;
     transition: background-color 0.5s;
-    margin-top: 24px;
+    margin-top: 36px;
 }
-
-/* The screams, they beckon terrible omens */
 
  /* The switch - the box around the slider */
 .switch {
@@ -99,7 +99,7 @@
 }
 
 /* The slider */
-.slider {
+.toggle {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -111,7 +111,7 @@
   transition: .4s;
 }
 
-.slider:before {
+.toggle:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -123,33 +123,95 @@
   transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;
+input:checked + .toggle {
+  background-color: #f5f5f5;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
+input:checked + .toggle:before {
+  background-color: #444444; 
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
-.slider.round {
+input:focus + .toggle {
+  box-shadow: 0 0 1px #f5f5f5;
+}
+
+/* Rounded toggles */
+.toggle.round {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.toggle.round:before {
   border-radius: 50%;
 } 
 
-.sliderParagraph {
+.settingsParagraph {
     display: inline-block;
-    padding: 16px;
+    padding: 0 16px;
     font-size: 15px;
-    color: #909090;
+    color: #d4d4d4;
 }
 
+.compactParagraph {
+  display: block;
+  padding: none;
+  font-size: 17px;
+  color: #ffffff;
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px; /* Make the track thinner */
+  border-radius: 5px;
+  background: #5b5b5b;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+/* Corrected WebKit selector and reduced thumb size */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  cursor: pointer;
+  box-shadow: 0 0 2px #00000044;
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  cursor: pointer;
+  box-shadow: 0 0 2px #00000044;
+}
+
+.slider::-ms-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  cursor: pointer;
+  box-shadow: 0 0 2px #00000044;
+}
+
+.sliderContainer {
+  width: 100%;
+}
