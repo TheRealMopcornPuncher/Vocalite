@@ -8,9 +8,9 @@ Support is only for Windows currently. I will add further support for Linux and 
 ### The process?
 
 First, detect vocal activity,
-Then, save a temporary buffer on your PC of that vocal activity.
+then, save a temporary buffer on your PC of that vocal activity.
 Send audio file (temporary buffer) for processing (Cleanup, then Discord magic),
-Repeat from the first step.
+repeat from the first step.
 
 ---
 
