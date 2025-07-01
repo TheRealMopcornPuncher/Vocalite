@@ -19,7 +19,7 @@ function MainMenu() {
           <h1>Menu options</h1>
           <button>Link discord</button>
           <button onClick={() => navigate('/settings')}>Settings</button>
-          <button>Shutdown</button>
+          <button onClick={() => window.close()}>Shutdown</button>
         </div>
       ) : (
         <div className={fadeStatus? "fadeout-right" : ""}>
