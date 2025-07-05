@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Route, Routes } from 'react-router-dom'
 import vocaliteLogo from '/Vocalite.svg'
-import './app.css'
+import './App.css'
 import Settings from './settings'
+import woahhhImg from './Assets/woahhh.png'
+import NotFound from './404'
 
 function MainMenu() {
   const [fadeStatus, setFadeStatus] = useState(false);
@@ -16,7 +18,8 @@ function MainMenu() {
     <>
       {fadeStatus ? (
         <div className="replacement-div">
-          <h1>Menu options</h1>
+          <img src={woahhhImg} alt="Woahhh" style={{ width: '150px', display: 'block', margin: '0 auto' }} />
+          <h1 style={{ marginTop: 0 }}>Menu options</h1>
           <button>Link discord</button>
           <button onClick={() => navigate('/settings')}>Settings</button>
           <button onClick={() => window.close()}>Shutdown</button>
@@ -48,6 +51,7 @@ function App() {
     <Routes>
       <Route path="/" element={<MainMenu />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
