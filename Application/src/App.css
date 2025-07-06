@@ -68,3 +68,25 @@
 .replacement-div {
   animation: fadein-top forwards 1s;
 }
+
+.mainmenu-button {
+  background-color: #e298f7;
+  min-width: 140px;
+  min-height: 40px;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 8px 0;
+  margin: 8px 8px 0 8px;
+  color: #222;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s, color 0.3s;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+}
+
+.mainmenu-button:hover {
+  background: #c86be6;
+  color: #fff;
+}

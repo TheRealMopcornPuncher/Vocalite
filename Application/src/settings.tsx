@@ -30,7 +30,7 @@ function Settings() {
     };
 
     return (
-        <div className="card">
+        <div className="settings-card">
             <div className={`dropdown${isOpen ? ' open' : ''}`}> 
                 <button className="dropdownButton" onClick={() => setIsOpen((prev) => !prev)}>
                     Microphone input
@@ -83,8 +83,8 @@ function Settings() {
             </div>
 
             <div>
-                <button className="button" onClick={() => navigate('/')}>Back</button>
-                <button className="button" onClick={handleSave}>Save</button> 
+                <button className="settings-button" onClick={() => navigate('/')}>Back</button>
+                <button className="settings-button" onClick={handleSave}>Save</button> 
             </div>
         </div>
     );

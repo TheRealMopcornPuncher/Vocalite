@@ -20,9 +20,9 @@ function MainMenu() {
         <div className="replacement-div">
           <img src={woahhhImg} alt="Woahhh" style={{ width: '150px', display: 'block', margin: '0 auto' }} />
           <h1 style={{ marginTop: 0 }}>Menu options</h1>
-          <button>Link discord</button>
-          <button onClick={() => navigate('/settings')}>Settings</button>
-          <button onClick={() => window.close()}>Shutdown</button>
+          <button className="mainmenu-button">Link discord</button>
+          <button className="mainmenu-button" onClick={() => navigate('/settings')}>Settings</button>
+          <button className="mainmenu-button" onClick={() => window.close()}>Shutdown</button>
         </div>
       ) : (
         <div className={fadeStatus? "fadeout-right" : ""}>

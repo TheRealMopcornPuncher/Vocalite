@@ -67,22 +67,6 @@
     background: #5e5e5e;
 }
 
-.button {
-    background-color: #909090;
-    min-width: 80px;
-    min-height: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 4px 30px;
-    margin-left: 4px;
-    margin-right: 4px;
-    color: #000000;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.5s;
-    margin-top: 36px;
-}
-
  /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -214,4 +198,54 @@ input:focus + .toggle {
 
 .sliderContainer {
   width: 100%;
+}
+
+.button {
+  background-color: #909090;
+  width: 80px;
+  min-height: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 4px 30px;
+  margin-left: 4px;
+  margin-right: 4px;
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.5s;
+  margin-top: 36px;
+}
+
+/* Settings card styling */
+.settings-card {
+    border-radius: 10px;
+    background-color: #262626;
+    padding: 2em;
+    margin: 0 auto;
+    width: min(90vw, 500px);
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Settings button styling */
+.settings-button {
+  background-color: #909090;
+  min-width: 120px;
+  min-height: 36px;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 4px 0;
+  margin-left: 4px;
+  margin-right: 4px;
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.5s;
+  margin-top: 36px;
+  display: inline-block;
+  text-align: center;
+}
+
+.settings-button:hover {
+  background-color: #b7b7b7;
 }
