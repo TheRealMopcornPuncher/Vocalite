@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { execSync } = require("child_process");
+const ffmpegPath = require("ffmpeg-static");
 const { SpeechRecorder, devices } = require("speech-recorder");
 
 // List available devices
@@ -22,7 +23,7 @@ const recorder = new SpeechRecorder({
   sampleRate: 16000,
   samplesPerFrame: 480,
   onChunkStart: () => console.log("Chunk started"),
-  // We'll assign onAudio dynamically later
+  // onAudio is set later in the recordingDaemon function
   onAudio: () => {},
   onChunkEnd: () => console.log("Chunk ended"),
 });
@@ -57,7 +58,7 @@ function recordingDaemon() {
 
     try {
       execSync(
-        `ffmpeg -y -f s16le -ar 16000 -ac 1 -i "${currentSpeechPath}" "${outputDir}/${currentBaseName}_speech_audio.m4a"`
+        `"${ffmpegPath}" -y -f s16le -ar 16000 -ac 1 -i "${currentSpeechPath}" "${outputDir}/${currentBaseName}_speech_audio.m4a"`
       );
       fs.unlinkSync(currentSpeechPath);
       console.log("Converted to M4A and deleted raw file.");

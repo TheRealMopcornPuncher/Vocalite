@@ -1,61 +1,47 @@
-// Prevents additional console window on Windows in release, DO NOT REMOVE!!
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-
 #![cfg_attr(
-    all(not(debug_assertions), target_os = "windows"),
-    windows_subsystem = "windows"
+  all(not(debug_assertions), target_os = "windows"),
+  windows_subsystem = "windows"
 )]
 
-use tauri::{Manager, Window};
-use std::process::{Command, Stdio};
-use std::io::{BufReader, BufRead};
-use std::thread;
+use tauri::{command, Builder, generate_context, generate_handler, Emitter, Window};
+use std::{
+  io::{BufRead, BufReader},
+  process::{Command, Stdio},
+  thread,
+};
 
-#[tauri::command]
+#[command]
 fn start_recording(window: Window) -> Result<(), String> {
-    // Path to node and your script - adjust as needed
-    let node_path = "node"; // Assumes node is in PATH
-    let script_path = "./src-tauri/node/recordingDaemon.js";
+  let mut child = Command::new("node")
+    .arg("./node/recorder.cjs")
+    .stdout(Stdio::piped())
+    .stderr(Stdio::piped())
+    .spawn()
+    .map_err(|e| format!("spawn error: {}", e))?;
 
-    let mut child = Command::new(node_path)
-        .arg(script_path)
-        .stdout(Stdio::piped())
-        .stderr(Stdio::piped())
-        .spawn()
-        .map_err(|e| format!("Failed to spawn node process: {}", e))?;
+  let stdout = child.stdout.take().unwrap();
+  let stderr = child.stderr.take().unwrap();
 
-    let stdout = child.stdout.take().unwrap();
-    let stderr = child.stderr.take().unwrap();
+  let win = window.clone();
+  thread::spawn(move || {
+    for line in BufReader::new(stdout).lines().flatten() {
+      let _ = win.emit("recording-stdout", line);
+    }
+  });
 
-    let window_clone = window.clone();
-    thread::spawn(move || {
-        let reader = BufReader::new(stdout);
-        for line in reader.lines() {
-            if let Ok(line) = line {
-                // Send stdout lines to frontend as event
-                let _ = window_clone.emit("recording-stdout", line);
-            }
-        }
-    });
+  let win = window;
+  thread::spawn(move || {
+    for line in BufReader::new(stderr).lines().flatten() {
+      let _ = win.emit("recording-stderr", line);
+    }
+  });
 
-    let window_clone = window.clone();
-    thread::spawn(move || {
-        let reader = BufReader::new(stderr);
-        for line in reader.lines() {
-            if let Ok(line) = line {
-                // Send stderr lines to frontend as event
-                let _ = window_clone.emit("recording-stderr", line);
-            }
-        }
-    });
-
-    // Detach child, or you can hold child handle somewhere for process management
-    Ok(())
+  Ok(())
 }
 
 fn main() {
-    tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![start_recording])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+  Builder::default()
+    .invoke_handler(generate_handler![start_recording])
+    .run(generate_context!())
+    .expect("error while running tauri application");
 }
