@@ -90,3 +90,36 @@
   background: #c86be6;
   color: #fff;
 }
+
+.menu-img {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+.menu-title {
+  margin-top: 0;
+}
+.menu-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.recorder-logs {
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.recorder-status {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.recorder-log-output {
+  font-size: 0.75rem;
+  background: #222;
+  color: #0f0;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
