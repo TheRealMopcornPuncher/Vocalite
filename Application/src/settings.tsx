@@ -14,14 +14,17 @@ function Settings() {
         const savedVolume = localStorage.getItem('settings.volume');
         const savedOutput = localStorage.getItem('settings.output');
         const savedStartup = localStorage.getItem('settings.startup');
+        const savedMicrophone = localStorage.getItem('settings.microphone');
         if (savedVolume) setVolume(Number(savedVolume));
         if (savedOutput) setOutput(savedOutput);
         if (savedStartup) setStartup(savedStartup === 'true');
+        if (savedMicrophone) setSelectedDevice(savedMicrophone);
         invoke<string[]>("list_microphones")
         .then(setMicrophonesList)
         .catch((err) => console.error("Failed to list microphones:", err));
     }, []);
 
+    const [selectedDevice, setSelectedDevice] = useState('Select Device');
     const [isOpen, setIsOpen] = useState(false);
     const [volume, setVolume] = useState(50);
     const [output, setOutput] = useState('discord');
@@ -32,24 +35,37 @@ function Settings() {
         localStorage.setItem('settings.volume', String(volume));
         localStorage.setItem('settings.output', output);
         localStorage.setItem('settings.startup', String(startup));
+        localStorage.setItem('settings.microphone', selectedDevice);
     };
 
     return (
         <div className="settings-card">
             <div className={`dropdown${isOpen ? ' open' : ''}`}> 
-                <button className="dropdownButton" onClick={() => setIsOpen((prev) => !prev)}> Microphone input </button>
+                <button className="dropdownButton" onClick={() => setIsOpen((prev) => !prev)}>
+                    {selectedDevice}
+                </button>
 
                 {isOpen && microphonesList.length > 0 && (
                     <div className="dropdown-items">
-                    {microphonesList.map((mic, idx) => (
-                        <p key={idx}>{mic}</p>
-                    ))}
+                        {microphonesList.map((mic, idx) => (
+                            <p
+                                key={idx}
+                                className="dropdown-item"
+                                onClick={() => {
+                                    setSelectedDevice(mic);
+                                    setIsOpen(false);
+                                }}
+                                style={{ cursor: 'pointer', margin: 0 }}
+                            >
+                                {mic}
+                            </p>
+                        ))}
                     </div>
                 )}
 
                 {isOpen && microphonesList.length === 0 && (
                     <div className="dropdown-items">
-                    <p>No microphones found</p>
+                        <p>No microphones found</p>
                     </div>
                 )}
             </div>
