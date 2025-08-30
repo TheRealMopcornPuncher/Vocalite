@@ -13,6 +13,7 @@
     "@tauri-apps/api": "^2.6.0",
     "chokidar": "^4.0.3",
     "mic": "^2.1.2",
+    "naudiodon": "^2.3.6",
     "node-fdkaac": "^1.5.0",
     "nodejs-whisper": "^0.2.9",
     "react": "^19.1.0",

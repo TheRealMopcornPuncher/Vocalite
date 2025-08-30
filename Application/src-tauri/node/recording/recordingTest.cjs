@@ -1,8 +1,21 @@
 const fs = require("fs");
 const path = require("path");
 const recorder = require("mic");
+const naudiodon = require("naudiodon");
+
+const devices = naudiodon.getDevices();
+
+// Filter devices that support input channels (> 0)
+const inputOnly = devices.filter(device => device.maxInputChannels > 0);
+
+console.log("Input devices found:");
+
+inputOnly.forEach(device => {
+  console.log(`- ${device.name}`);
+});
 
 const settings = recorder({
+    device: `plughw: 0`,
     rate: 16000,
     channels: 1,
     bitwidth: 16,

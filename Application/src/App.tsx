@@ -6,6 +6,7 @@ import woahhhImg from './Assets/woahhh.png'
 import './App.css'
 import Settings from './settings'
 import NotFound from './404'
+import MicTest from './mictest'
 
 function App() {
   const [fadeStatus, setFadeStatus] = useState(false)
@@ -23,6 +24,7 @@ function App() {
                 <h1 className="menu-title">Menu options</h1>
                 <div className="menu-buttons">
                   <button className="mainmenu-button">Link discord</button>
+                  <button className="mainmenu-button" onClick={() => navigate('/micTest')}>Mic Selection Test</button>
                   <button className="mainmenu-button" onClick={() => navigate('/settings')}>Settings</button>
                   <button className="mainmenu-button" onClick={() => window.close()}>Shutdown</button>
                 </div>
@@ -48,6 +50,7 @@ function App() {
       />
       <Route path="/settings" element={<Settings />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/micTest" element={<MicTest />} />
     </Routes>
   )
 }

@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './App.css'
 import './settings.css'
+import { invoke } from '@tauri-apps/api/core';
 
 function Settings() {
     const navigate = useNavigate();
+    const [microphonesList, setMicrophonesList] = useState<string[]>([]);
 
     // Load settings from localStorage on mount
     useEffect(() => {
@@ -15,6 +17,9 @@ function Settings() {
         if (savedVolume) setVolume(Number(savedVolume));
         if (savedOutput) setOutput(savedOutput);
         if (savedStartup) setStartup(savedStartup === 'true');
+        invoke<string[]>("list_microphones")
+        .then(setMicrophonesList)
+        .catch((err) => console.error("Failed to list microphones:", err));
     }, []);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -32,13 +37,21 @@ function Settings() {
     return (
         <div className="settings-card">
             <div className={`dropdown${isOpen ? ' open' : ''}`}> 
-                <button className="dropdownButton" onClick={() => setIsOpen((prev) => !prev)}>
-                    Microphone input
-                </button>
-                <div className="dropdown-items">
-                    <p>Item 1</p>
-                    <p>Item 2</p>
-                </div>
+                <button className="dropdownButton" onClick={() => setIsOpen((prev) => !prev)}> Microphone input </button>
+
+                {isOpen && microphonesList.length > 0 && (
+                    <div className="dropdown-items">
+                    {microphonesList.map((mic, idx) => (
+                        <p key={idx}>{mic}</p>
+                    ))}
+                    </div>
+                )}
+
+                {isOpen && microphonesList.length === 0 && (
+                    <div className="dropdown-items">
+                    <p>No microphones found</p>
+                    </div>
+                )}
             </div>
 
             <div>
